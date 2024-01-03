@@ -1,0 +1,56 @@
+/*
+NAME: Akshitha S
+DATE: 25/12/2023
+TITLE: WAP to implement Circular right shift
+Sample Input:   Enter num: 12
+                Enter n : 3
+Sample Output:  Result : 10000000 00000000 00000000 00000001
+*/
+
+#include <stdio.h>
+
+int circular_right (int, int);          //Function declaration
+int print_bits (int);                   //Function declaration
+
+int main()
+{
+    int num, n, ret;
+    printf ("Enter num: ");
+    scanf ("%d", &num);
+    printf ("Enter n : ");
+    scanf ("%d", &n);
+
+    if ((n >= 0) && (n < 32))
+    {
+        ret = circular_right (num, n);          //Function call 
+        printf ("Result in Binary: ");
+        print_bits(ret);                        //Function call 
+        printf ("\n");
+    }
+    else
+    {
+        printf ("The value of 'n' shall be in the range of 0 to 32.\n");
+    }
+    return 0;
+}
+
+int circular_right (int num, int n)
+{
+    return (((unsigned int) num >> n) | num << (32 - n));       //The bits are right shifted normally. unsigned int type casting is for preventing the MSB from being a sign bit. The LSB side bits are left shifted to position them exactly at the vacated bits on the MSB side. The OR operation gives the final result of Circular Right shift.
+}
+
+int print_bits (int res)
+{
+    for (int i = 31; i >= 0; i--)
+    {
+        if (res & (1 << i))         //If the AND operation is a non-zero value, print "1".
+        {
+            printf ("1 ");
+        }
+        else                        //If the AND operation is a zero-value, print "0".
+        {
+            printf ("0 ");
+        }
+    }
+    return 1;
+}
