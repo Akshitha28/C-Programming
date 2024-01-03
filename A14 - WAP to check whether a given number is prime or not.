@@ -1,0 +1,29 @@
+/*
+NAME: Akshitha S
+DATE: 16/12/2023
+TITLE: WAP to check whether a given number is prime or not.
+Sample Input: Enter a number: 2
+Sample Output: 2 is a prime number
+*/
+
+#include <stdio.h>
+int main()
+{
+    int i,num,count=0;                  //Read input from user
+    scanf("%d",&num);
+
+    if (num > 0)                         // Check the number greater than 1 or not
+    {
+        for (i = 2; (i * i) <= num;i++)                 // Running the loop
+        {
+            if ( num % i  == 0 ) count++;               // Checking condition
+        }
+
+        count == 0 ? printf("%d is a prime number\n",num) : printf("%d is not a prime number\n",num);
+    }
+    else
+    {
+        printf("Invalid input\n");
+    }
+    return 0;
+}
