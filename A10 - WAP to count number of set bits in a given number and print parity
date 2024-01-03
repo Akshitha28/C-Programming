@@ -1,0 +1,39 @@
+/*
+NAME: Akshitha S
+DATE: 04/12/2023
+TITLE: WAP to count number of set bits in a given number and print parity
+Sample Input: Enter the number : 15
+Sample Output: Number of set bits = 4
+
+               Bit parity is Even
+*/
+
+#include <stdio.h>
+int countSetBits(int num)
+{
+    int count = 0;                                      //Initalize count = 0
+    while (num)
+    {
+        count += num & 1;
+        num >>= 1;
+    }
+    return count;
+}
+
+int main()
+{
+    int num;
+    printf("Enter the number: ");                       //Reads user input
+    scanf("%d", &num);
+    int setBits = countSetBits(num);                    // Count set bits
+    printf("Number of set bits = %d\n", setBits);       // Output set bits count
+    if (setBits % 2 == 0)                               // Determine and output parity
+    {
+        printf("Bit parity is Even\n");                 //Prints this statement if the condition is Even
+    }
+    else
+    {
+        printf("Bit parity is Odd\n");                  //Prints if the condition is Odd
+    }
+    return 0;
+}
