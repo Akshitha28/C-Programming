@@ -1,0 +1,39 @@
+/*
+NAME: Akshitha S
+DATE: 24/11/2023
+TITLE: WAP to check if number is perfect or not
+Sample Input: Enter a number: 6
+Sample Output: Yes, entered number is perfect number
+*/
+
+
+#include <stdio.h>
+int main()
+{
+    int num, sum = 0;
+    // Input
+    printf("Enter a number: ");
+    scanf("%d", &num);
+    if (num < 0)                // Check for invalid input (negative numbers)
+    {
+        printf("Error: Invalid Input, Enter only positive number\n");
+        return 0;
+    }
+    for (int i = 1; i < num; i++)               // Find the sum of divisors excluding the number itself
+    {
+        if (num % i == 0)
+        {
+            sum += i;
+        }
+    }
+
+    if (sum == num)                             // Check if the sum of divisors is equal to the original number
+    {
+        printf("Yes, entered number is perfect number\n");    //Print the True statement
+    } else
+    {
+        printf("No, entered number is not a perfect number\n"); //print the else statement if the condition is false
+    }
+
+    return 0;
+}
