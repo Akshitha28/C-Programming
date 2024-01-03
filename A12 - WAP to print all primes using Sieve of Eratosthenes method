@@ -1,0 +1,44 @@
+/*
+NAME: Akshitha S
+DATE: 14/12/2023
+TITLE:  WAP to print all primes using Sieve of Eratosthenes method
+Sample Input: Enter the value of 'n' : 20
+Sample Output:The primes less than or equal to 20 are : 2, 3, 5, 7, 11, 13, 17, 19
+*/
+
+#include<stdio.h>
+int main()
+{
+    int n, i, j, k=0, l;        //Initializing variables
+    printf("Enter the values of 'n': ");
+    scanf("%d", &n);
+    if (n > 1)          //Print prime numbers if given value is greater than 1
+    {
+        int arr[n - 1];
+        for ( i = 0; i < n - 2; i++)            //Loop to generate numbers
+        {
+            arr[i] = i + 2;
+        }
+        for ( j = 2; j * j <= n; j++)           //To make non prime numbers to zero
+        {
+            for (k = j * j - 2; k < n - 1; k = k + j)
+            {
+                arr[k] = 0;
+            }
+        }
+        printf("The primes less than or equal to %d are:", n);
+
+        for (l= 0; l < n - 2; l++)              //Loop to print non zero element
+        {
+            if (arr[l] != 0)
+            {
+                printf("%d, ", arr[l]);
+            }
+        }
+    }
+    else
+    {
+        printf("Please Enter a positive number which is > 1");
+    }
+    return 0;
+}
