@@ -1,0 +1,35 @@
+/*
+NAME: Akshitha S
+DATE: 27/11/2023
+TITLE: WAP to print the numbers in X format as shown below
+Sample Input: Enter the number: 5
+Sample Output: 1   5
+                2 4
+                 3
+                2 4
+               1   5
+*/
+
+
+#include <stdio.h>
+int main()
+{
+    int n, i, j;
+    printf("Enter the number: "); //Read the value of n from the user
+    scanf("%d", &n);
+    for (i = 1; i <= n; i++)    // Loop to iterate through rows
+    {
+        for (j = 1; j <= n; j++)        // Loop to iterate through columns
+        {
+            if (i == j || j == n - i + 1)  // Print spaces or numbers based on the condition
+            {
+                printf("%d", j);
+            } else
+            {
+                printf(" ");
+            }
+        }
+        printf("\n");   // Move to new line
+    }
+    return 0;
+}
