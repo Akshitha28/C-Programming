@@ -1,0 +1,49 @@
+/*
+NAME: Akshitha S
+DATE: 14/12/2023
+TITLE: WAP to replace 'n' bits of a given number
+Sample Input:
+Enter the number: 10
+
+Enter number of bits: 3
+
+Enter the value: 12
+
+Sample Output: Result = 12
+*/
+
+
+#include <stdio.h>
+int replaceBits(int number, int numBits, int value)    // Function to replace 'n' bits of a given number
+{
+    int mask = (1 << numBits) - 1;                       // Create a mask with 'numBits' set to 1
+    number &= ~(mask << 0);                               // Clear 'numBits' bits in the original number
+    number |= (value & mask) << 0;                      // Set the 'numBits' bits with the new value
+    return number;
+}
+int main()
+{
+    int num, numBits, newValue;                  // Input from the user
+    printf("Enter the number: ");
+    if (scanf("%d", &num) != 1)
+    {
+        printf("Invalid input\n");
+        return 1;
+    }
+
+    printf("Enter number of bits: ");               //Read input from user
+    if (scanf("%d", &numBits) != 1 || numBits <= 0)
+    {
+        printf("Invalid input\n");
+        return 1;
+    }
+    printf("Enter the value: ");                    //Read Input from user
+    if (scanf("%d", &newValue) != 1)
+    {
+        printf("Invalid input\n");
+        return 1;
+    }
+    int result = replaceBits(num, numBits, newValue);           // Replace 'numBits' bits of the given number with the new value
+    printf("Result = %d\n", result);                             // Display the result
+    return 0;
+}
