@@ -1,0 +1,38 @@
+/*
+NAME: Akshitha S
+DATE: 22/12/2023
+TITLE: WAP to put the (b-a+1) lsb’s of num into val[b:a]
+Sample Input:   Enter the value of 'num' : 11
+                Enter the value of 'a' : 3
+                Enter the value of 'b' : 5
+                Enter the value of 'val': 174
+Sample Output:  Result : 158
+*/
+
+
+#include <stdio.h>
+
+int extract_and_insert(int, int, int, int);                     //Function Declaration
+
+int main()
+{
+    int num, a, b, val, result = 0;
+    printf("Enter num, a, b, and val:");
+    scanf("%d%d%d%d", &num, &a, &b, &val);
+
+    result = extract_and_insert(num, a, b, val);                //Function call
+
+    printf("Result = %d\n", result);                            //Print result
+}
+
+int extract_and_insert(int num, int a, int b, int val)          // function definition
+{
+    int extracted_bits = num & ((1 << (b - a + 1)) - 1);        // Extract the least significant (b-a+1) bits from num
+
+    int mask = ~(((1 << (b - a + 1)) - 1) << a);                // Clear the bits from position a to b in val
+    val = val & mask;
+
+    val = val | (extracted_bits << a);                          // Set the bits from position a to b in val with the extracted bits
+
+    return val;
+}
