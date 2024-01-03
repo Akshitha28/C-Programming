@@ -1,0 +1,65 @@
+/*
+NAME: Akshitha S
+DATE: 28/12/2023
+TITLE: WAP to find 2nd largest element in an array
+Sample Input:   Enter the size of the Array : 5
+                Enter the elements into the array: 5 1 4 2 8
+Sample Output: Second largest element of the array is 5
+*/
+
+
+#include <stdio.h>
+
+int sec_largest (int [], int);                                          //Function declaration
+
+int main()
+{
+    int size, ret;
+    printf ("Enter the size of the array : ");
+    scanf ("%d", &size);
+    
+    if (size > 1)                                                       //The size of the array input should have a minimum of 2 elements.
+    {
+        int arr[size];
+        printf ("Enter the elements into the array: ");
+        for (int i = 0; i < size; i++)
+        {
+            scanf ("%d", &arr[i]);
+        }
+
+        ret = sec_largest (arr, size);                                  //Function call
+        printf ("Second largest element of the array is %d\n", ret);    //If the entered array size is less than 2, an error message is printed.
+    }
+    else
+    {
+        printf ("Error: The size of the array cannot be less than 2. Please enter the size greater than 1\n");
+    }
+    return 0;
+}
+
+int sec_largest (int a[], int n)
+{
+    int min = a[0];                             //Initialise the variable
+    for (int i = 1; i < n; i++)                 //Check for the minimum value
+    {
+        if (min > a[i])                         //If the array element is smaller than the 'min', store the array element in 'min'.
+        {
+            min = a[i];
+        }
+    }
+    int fl = min, sl = min;                     //Initialise variables
+    
+    for (int i = 0; i < n; i++)
+    {
+        if (fl < a[i])
+        {
+            sl = fl;
+            fl = a[i];
+        }
+        else if ((sl < a[i]) && (a[i] != fl))     //Checks else if condition
+        {
+            sl = a[i];
+        }
+    }
+    return sl;
+}
