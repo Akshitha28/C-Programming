@@ -1,0 +1,46 @@
+/*
+NAME: Akshitha S
+DATE: 15/12/2023
+TITLE: WAP to get 'n' bits from given position of a number
+Sample Input:
+Enter the number: 12
+Enter number of bits: 3
+Enter the pos: 4
+
+Sample Output: Result = 3
+*/
+
+
+#include <stdio.h>
+
+int get_nbits_from_pos(int, int, int);                  // Function declaration
+
+int main()
+{
+    int num, n, pos, res = 0;                           //Variable initalization
+    printf("Enter the number: ");                       // Read input from the user
+    scanf("%d", &num);
+
+    printf("Enter number of bits: ");
+    scanf("%d", &n);
+
+    printf("Enter the pos: ");
+    scanf("%d", &pos);
+
+    res = get_nbits_from_pos(num, n, pos);                      //Function call
+    printf("Result = %d\n", res);
+
+    return 0;
+}
+
+int get_nbits_from_pos(int num, int n, int pos)                 //Function defination
+{
+    int res = 0, get_nbits;
+
+    get_nbits = (num >>(pos + 1 - n) & ~(1 << n));               //variable initalization
+    res = get_nbits;
+
+    return res;                                                 //return res
+}
+
+
