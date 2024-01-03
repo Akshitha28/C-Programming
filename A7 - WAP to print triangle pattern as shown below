@@ -1,0 +1,41 @@
+/*
+NAME: Akshitha S
+DATE: 21/11/2023
+TITLE: WAP to print triangle pattern as shown below
+Sample Input: Enter the number: 5
+Sample Output:
+1 2 3 4 5
+6       7
+8    9
+10 11
+12
+*/
+
+
+
+#include <stdio.h>
+int main()
+{
+    int n, num = 0;
+    printf("Enter the number: ");       // Read the value of n from the user
+    scanf("%d", &n);
+    for (int i = n; i >= 1; i--)        // Loop to iterate through rows
+    {
+        for (int j = 1; j <=  i; j++)   // Loop to iterate through columns
+        {
+                if (i == n || j == 1 || j == i )        //Checking for if condition
+                {
+                    num = num + 1;
+                    printf("%d ",num);                  //print num
+                }
+                else
+                {
+                    printf("  ");                       //print spaces
+                }
+        }
+                printf("\n");
+
+    }
+         return 0;
+
+}
