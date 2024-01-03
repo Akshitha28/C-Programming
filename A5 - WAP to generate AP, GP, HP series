@@ -1,0 +1,58 @@
+/*
+NAME: Akshitha S
+DATE: 25/11/2023
+TITLE: WAP to generate AP, GP, HP series
+Sample Input:
+        Enter the First Number 'A': 2
+        Enter the Common Difference / Ratio 'R': 3
+        Enter the number of terms 'N': 5
+Sample Output:
+        AP = 2, 5, 8, 11, 14,
+        GP = 2, 6, 18, 54, 162,
+        HP = 0.500000, 0.200000, 0.125000, 0.090909, 0.071428,
+*/
+
+#include <stdio.h>
+#include <math.h>
+int main()
+{
+    int A, G, N, sum, pro, div;         //Read input from user
+    printf("Enter the First Number 'A': ");
+    scanf("%d", &A);
+    printf("Enter the Common Difference / Ratio 'R': ");
+    scanf("%d", &G);
+    printf("Enter the number of terms 'N': ");
+    scanf("%d", &N);
+    if (N >= 0)                 //Check the condition whether N is greater than or equal to 0
+    {
+        sum = A;                //Sum equal to 0
+        printf("AP = ");        //Print AP
+        for (int i = 0; i < N; i++)     //For loop for i
+        {
+            printf("%d, ", sum);        //Print the sum
+            sum = sum + G;              //Incriment the sum
+        }
+        pro = A;                        //Pro equal to A
+        printf("\n");
+        printf("GP = ");                //Print GP
+        for (int j = 0; j < N; j++)     //For loop for j
+        {
+            printf("%d, ", pro);        //Print the pro
+            pro = pro * G;              //Incriment pro
+        }
+        div = A;                        //Div is equal to A
+        printf("\n");
+        printf("HP = ");                //Print the HP
+        for (int k = 0; k < N; k++)     //For loop for k
+        {
+            printf("%f, ", (float)1/div);       //Print Div
+            div = div + G;                      //Incriment Div
+        }
+        printf("\n");
+    }
+    else
+    {
+        printf("Invalid Input\n");              //If condition is false print this statement
+    }
+    return 0;
+}
