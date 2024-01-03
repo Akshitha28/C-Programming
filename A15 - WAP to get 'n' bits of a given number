@@ -1,0 +1,33 @@
+/*
+NAME: Akshitha S
+DATE: 14/12/2023
+TITLE: WAP to get 'n' bits of a given number
+Sample Input:   Enter the number: 10
+                Enter number of bits: 3
+Sample Output: Result = 2
+*/
+
+#include <stdio.h>
+int getBits(int number, int numBits)                    // Function to get 'n' bits of a given number
+{
+    return (number & ((1 << numBits) - 1));              // Use bitwise AND operation to extract 'numBits' bits
+}
+int main()
+{
+    int num, numBits;
+    printf("Enter the number: ");                       //Read input from user
+    if (scanf("%d", &num) != 1)
+    {
+        printf("Invalid input\n");
+        return 1;
+    }
+    printf("Enter number of bits: ");                   //Read input from user
+    if (scanf("%d", &numBits) != 1 || numBits <= 0)
+    {
+        printf("Invalid input\n");
+        return 1;
+    }
+    int result = getBits(num, numBits);         // Get 'numBits' bits of the given number
+    printf("Result = %d\n", result);            // Display the result
+    return 0;
+}
