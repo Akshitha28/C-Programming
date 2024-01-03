@@ -1,0 +1,45 @@
+/*
+NAME: Akshitha S
+DATE: 23/11/2023
+TITLE: WAP to check if number is odd or even
+Sample Input: Enter the value of 'n' : -2, 2, 0
+Sample Output: '%d' negative even number
+               '%d' positive even number,
+               '%d' 0 is neither odd nor even
+*/
+
+#include <stdio.h>
+int main()
+{
+    int n;                                      // Taking user input
+    printf("Enter the value of 'n' : ");
+    scanf("%d", &n);
+    if (n > 0)                                  // Checking if the number is odd or even using nested if-else statements
+    {
+        if (n % 2 == 0)                         //check condition for even number
+        {
+            printf("%d is positive even number.\n", n);         //print positive/ even statement
+        }
+        else
+        {
+            printf("%d is positive odd number.\n", n);          //print negative/ odd statement
+        }
+    }
+    else if (n < 0)
+    {
+        if (n % 2 == 0)                         //check if the number is even / odd
+        {
+            printf("%d is negative even number.\n", n);
+        }
+        else
+        {
+            printf("%d is negative odd number.\n", n);
+        }
+    }
+    else
+    {
+        printf("0 is neither odd nor even.\n");
+    }
+
+    return 0;                                   //terminate loop
+}
