@@ -1,0 +1,40 @@
+/*
+NAME: Akshitha S
+DATE: 28/12/2023
+TITLE: WAP to implement your own isxdigit() function
+Sample Input:  Enter the character: a
+Sample Output: Entered character is an hexadecimal digit
+*/
+
+
+#include <stdio.h>
+
+int is_xdigit(int);                             //Declare Function
+
+int main()
+{
+    char ch;
+    short ret;
+
+    printf("Enter a character: ");              //Read inputs from user
+    scanf("%c", &ch);
+
+    ret = is_xdigit(ch);                        //Function call
+    if (ret)
+    {
+        printf("Entered character is an hexadecimal digit\n");
+    }
+    else
+    {
+        printf("Entered character is not an hexadecimal digit\n");
+    }
+}
+
+int is_xdigit(int ch)                           //Function defination
+{
+
+    return (ch >= 65 && ch <= 70 || ch >= 97 && ch <= 102 || ch >= 48 && ch <= 53);            //Return function
+
+}
+
+
