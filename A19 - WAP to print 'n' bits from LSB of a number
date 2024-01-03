@@ -1,0 +1,48 @@
+/*
+NAME: Akshitha S
+DATE: 22/12/2023
+TITLE: WAP to print 'n' bits from LSB of a number
+Sample Input:   Enter the number: 10
+                Enter number of bits: 12
+
+Sample Output:  Binary form of 10: 0 0 0 0 0 0 0 0 1 0 1 0
+*/
+
+
+#include <stdio.h>
+
+int print_bits(int, int);                       //Function Declaration
+int main()
+{
+    int num, n, res;                            //Initalize variables
+    printf("Enter the number: ");               //Read inputs from user
+    scanf("%d", &num);
+
+    printf("Enter number of bits: ");
+    scanf("%d", &n);
+
+    printf("Binary form of %d: ", num);
+    res = print_bits(num, n);                   //Function call
+    return 0;
+}
+
+int print_bits(int num, int n)                  //Function Declaration
+{
+    int res;                                    //Initialize local variables
+    if(n > 31)
+    {
+        n = 4;
+    }
+
+    for (int i = n -1; i >= 0; i--)             //print nbits of number
+    {
+        if(num & (1 << i) )
+        {
+            printf("1 ");
+        }
+        else
+        {
+            printf("0 ");
+        }
+    }
+}
