@@ -1,0 +1,79 @@
+/*
+NAME: Akshitha S
+DATE: 02/01/2024
+TITLE: Print the values in sorted order without modifying or copying array
+Sample Input:   Enter the size : 5
+                Enter 5 elements
+                10 1 3  8 -1
+Sample Output:  After sorting: -1 1 3 8 10
+                Original array values 10 1 3 8 -1
+*/
+
+
+#include <stdio.h>
+
+void print_sort(int [], int );                    //function declaration 
+
+int main()
+{ 
+    int size, i;                                 //variable declaration 
+    printf("Enter the size : " );
+    scanf("%d",&size);                          //read the sizeof array from user 
+
+    int arr[size];                              //initialize array 
+    int res;
+
+    printf("Enter %d elements\n ", size);
+
+    for ( int i = 0; i < size; i++ )                   //read the elements of array from user
+    {
+	scanf("%d", & arr[i] );
+    }
+
+    print_sort(arr,size);                                //function call 
+
+    printf("\nOriginal array values ");
+    for (int i = 0; i < size; i++ )                      // print the elements of array from user 
+    {
+      printf("%d ", arr[i] );
+    }
+}
+
+void print_sort(int arr[], int size )                   //function declaration 
+{
+    int small, sec_small, large,iter=0;                //variable declaration
+    small = arr[0];
+    large = arr[0];
+    for (int i = 0; i < size; i++ )                    // to find the smallest and largest elements of array 
+    {  
+	if ( small > arr[i] )
+	{
+	    small = arr[i];
+	}
+	if ( large < arr[i] )
+	{
+	    large = arr[i];
+	}
+    }
+    printf("After sorting: %d ", small);
+    sec_small = large; 
+
+
+    while ( iter != size - 1 )                          //when iter is not equal to size -1 then enter the  loop 
+    {
+
+	for ( int j = 0; j < size; j++ )                   //run the loop for size times 
+	{
+	    if ( arr[j] > small && arr[j] < sec_small )     
+	    {
+		sec_small = arr[j];
+	    }
+
+	}
+	printf("%d " , sec_small);                         //print next smallest number 
+	small = sec_small;                                 //assign the small to sec_small
+	sec_small = large;                                 //assign the sec_small to large 
+	iter++;                                            //iter increment 
+
+    }
+}
