@@ -1,0 +1,61 @@
+/*
+NAME: Akshitha S
+DATE: 08/01/22024
+TITLE: WAP to implement itoa function
+Sample Input: Enter the number : a1234
+Sample Output:Integer to string is 0
+*/
+
+
+#include <stdio.h>
+
+int itoa (int num, char str[]);
+
+int main()
+{
+    int num;
+    char str[10];
+    printf ("Enter the number : ");                             //Read Inputs from user
+    int ret = scanf ("%d", &num);
+    if ((ret == 0) || (num == 0))
+    {
+        str [0] = '0';
+        str [1] = '\0';
+    }
+    else
+    {
+        itoa (num, str);
+    }
+    printf ("Integer to string is %s\n", str);
+    return 0;
+}
+
+int itoa (int num, char str[])
+{
+    int rem, count = 0, orig = num, i = 0;
+    while (num != 0)                                            //To count the number of digits present in the number.
+    {
+        count += 1;
+        num = num / 10;
+    }
+    if (orig > 0)                                               //If the number is positive, we don't have to display a '+' sign in the string as default is positive.
+    {
+        str [count] = '\0';
+        num = orig;
+        i = count - 1;
+    }
+    else if (orig < 0)                                          //If the number is negative, we have to display a '-' sign in the string to show that it is a negative number.
+    {
+        str [count + 1] = '\0';
+        str [0] = '-';                                          //The first position of the string is updated with '-'.
+        num = (-orig);
+        i = count;
+    }
+    while (num != 0)
+    {
+        rem = (num % 10) + 48;                                  //Conversion of decimal value to ASCII character.
+        str [i] = rem;                                          //Updating the character extracted to it's right position in the string.
+        num = num / 10;                                         //Decreasing the 'num' to remove the value that is converted to string.
+        i -= 1;                                                 //Updating the postion of the string.
+    }
+}
