@@ -1,0 +1,66 @@
+/*
+NAME:  Akshitha S
+DATE:  03/01/2024
+TITLE: WAP to generate the prime series upto the given limit using functions
+Sample Input:  Enter a number: 4
+Sample Output: 2 3
+*/
+
+
+#include <stdio.h>
+
+int is_prime(int);                                             //is_prime function declaration
+
+void generate_prime(int);                                      //generate_prime function declaration
+
+int main()
+{
+    int limit;                                                 //initialize variable
+
+    //printf("Enter the limit: ");
+    scanf("%d", &limit);                                      //read the limit from the user
+
+    if (limit > 1)                                            //check the condition whether limits is greaterthan 1
+    {
+        generate_prime(limit);                                //generate function call
+    }
+    else
+    {
+        printf("Invalid input\n");
+    }
+
+    return 0;
+}
+void generate_prime(int limit)                                //generate_prime function defination
+{
+    int i = 2, res;                                           //initialize the variables
+    for (i=2; i <= limit; i++)                                //run the limit for limit times
+    {
+        res = is_prime(i);                                    //is_prime function call
+        if (res == 1)                                         //res is equal to 1, the print the number
+        {
+            printf("%d ", i);
+        }
+
+    }
+}
+
+int is_prime(int i)                                          //is_prime function defination
+{
+    int count = 0;                                           //initialize the variable
+    for (int j = 2; j * j <= i; j++)                         //run the loop for square root times of i
+    {
+        if (i % j == 0)                                      //if i is multiple of j, then increment count value
+        {
+            count = count + 1;
+        }
+    }
+    if (count == 0)                                         //if count is 0 then retuen 1, else return 0
+    {
+        return 1;
+    }
+    else
+    {
+        return 0;
+    }
+}
